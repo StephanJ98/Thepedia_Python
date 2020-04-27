@@ -1,0 +1,200 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    min-width: 420px;
+}
+body {
+    animation:fond 70s infinite;
+}
+@keyframes fond{
+    /*  Il faut precharger l'image suivante pour eviter les flash blancs*/
+    0% {
+        background: url("/static/te4.jpg") fixed center;
+        background-size: cover;
+        height: 100%;
+    }
+    10% {
+        background: url("/static/te4.jpg") fixed center, url("/static/te3.jpg");
+        background-size: cover;
+        height: 100%;
+    }
+    18% {
+        background: url("/static/te3.jpg") fixed center, url("/static/te2.jpg");
+        background-size: cover;
+        height: 100%;
+    }
+    26% {
+        background: url("/static/te2.jpg") fixed center, url("/static/te1.jpg");
+        background-size: cover;
+        height: 100%;
+    }
+    34% {
+        background: url("/static/te1.jpg") fixed center, url("/static/te5.jpg");
+        background-size: cover;
+        height: 100%;
+    }
+    42% {
+        background: url("/static/te5.jpg") fixed center, url("/static/te6.jpg");
+        background-size: cover;
+        height: 100%;
+    }
+    50% {
+        background: url("/static/te6.jpg") fixed center, url("/static/te7.jpg");
+        background-size: cover;
+        height: 100%;
+    }
+    58% {
+        background: url("/static/te7.jpg") fixed center, url("/static/te8.jpg");
+        background-size: cover;
+        height: 100%;
+    }
+    66% {
+        background: url("/static/te8.jpg") fixed center, url("/static/te9.jpg");
+        background-size: cover;
+        height: 100%;
+    }
+    74% {
+        background: url("/static/te9.jpg") fixed center, url("/static/te10.jpg");
+        background-size: cover;
+        height: 100%;
+    }
+    82% {
+        background: url("/static/te10.jpg") fixed center, url("/static/te11.jpg");
+        background-size: cover;
+        height: 100%;
+    }
+    90% {
+        background: url("/static/te11.jpg") fixed center;
+        background-size: cover;
+        height: 100%;
+    }
+    100% {
+        background: url("/static/te4.jpg") fixed center, url("/static/te3.jpg");
+        background-size: cover;
+        height: 100%;
+    }
+}
+#header {
+    background-color: #546a2a;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.titre_div {
+    text-align: center;
+}
+.titre {
+    font-weight: bold;
+    margin-left: 10px;
+    color: #d6dace;
+}
+.img_header {
+    color: #d6dace;
+    font-size: 30px;
+    margin-top: 5px;
+}
+#navbar {
+    color: greenyellow;
+    text-align: center;
+    background-color: #546a2a;
+    border-bottom: 2px solid #647a3a;
+}
+#navbar button {
+    color: #d6dace;
+    background-color: #546a2a;
+    border: none;
+}
+#navbar button:hover {
+    background-color: #647a3a;
+}
+.vert {
+    background-color: #546a2a;
+    color: #d6dace;
+    border: none;
+}
+.noir {
+    color: #d6dace;
+    background-color: #2b3737;
+    border: none;
+}
+.blanc {
+    color: #24252a;
+    background-color: #edffca;
+    border: none;
+}
+.rouge {
+    background-color: #a06726;
+    color: #d6dace;
+    border: none;
+}
+.bleu {
+    background-color: #9fa060;
+    color: #d6dace;
+    border: none;
+}
+.ajoutThe{
+    background-color: #647a3a;
+}
+.ajoutThe:hover{
+    background-color: #7d933a;
+}
+.ajoutThe:hover > .img_feuille {
+    transform: rotate(-25deg);
+}
+#acces{
+    height: 60%;
+}
+#principale{
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.bouton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.nodat {
+    margin-top: 150px;
+    animation:blinkingText 1.5s infinite;
+}
+@keyframes blinkingText{
+    from {
+        color: #d6dace;
+        background-color: red;
+    }
+    to {
+        color: transparent;
+        background-color: transparent;
+    }
+}
+#idBouton {
+    font-size: 20px;
+}
+#idBouton:hover > .img_feuille_bouton{
+    font-size: 220px;
+}
+#idBouton:hover > .text_feuille_bouton{
+    font-size: 25px;
+}
+.img_feuille_bouton {
+    position: absolute;
+    font-size: 200px;
+    width: auto;
+    left: 50%;
+    top: 200px;
+    -webkit-transform: translate(-50%, 0);
+    color: #546a2a;
+}
+.text_feuille_bouton {
+    position: absolute;
+    font-size: 20px;
+    width: auto;
+    left: 50%;
+    top: 250px;
+    -webkit-transform: translate(-50%, 0);
+    color: #d6dace;
+}
+.centreur {
+    text-align: center;
+}

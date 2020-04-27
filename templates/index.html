@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>ThePedia</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body class="container-fluid">
+    <header>
+        <div id="header" class="row">
+            <div class="col-4 titre_div">
+                <form action="/home" method="get" id="activateur">
+                    <button type="submit" class="btn"><h3 class="titre">的 - Thepedia</h3></button>
+                </form>
+                <script>
+                    window.onload = function(){
+                        document.forms['activateur'].submit();
+                    }
+                </script>
+            </div>
+            <div class="offset-6 col-2 titre_div">
+                <button type="button" class="btn ajoutThe" data-toggle="modal" data-target="#ajouter">
+                    <i class="fa fa-leaf img_header img_feuille"></i>
+                    <i class="fa fa-plus img_header"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <section id="navbar" class="row">
+        <button type="button" class="btn col" data-toggle="modal" data-target="#vert"><strong>Verde</strong></button>
+        <button type="button" class="btn col" data-toggle="modal" data-target="#noir"><strong>Negro</strong></button>
+        <button type="button" class="btn col" data-toggle="modal" data-target="#blanc"><strong>Blanco</strong></button>
+        <button type="button" class="btn col" data-toggle="modal" data-target="#puerh"><strong>Pu Erh</strong></button>
+        <button type="button" class="btn col" data-toggle="modal" data-target="#oolong"><strong>Oolong</strong></button>
+    </section>
+    <section id="principale">
+        <div id="acces" class="bouton">
+            <form method="get" action="/montrer">
+                <button type="submit" id="idBouton" class="btn">
+                    <i class="fa fa-leaf img_feuille_bouton"></i>
+                    <strong class="text_feuille_bouton">
+                        <p>Últimas</p>
+                        <p>Llegadas</p>
+                    </strong>
+                </button>
+            </form>
+        </div>
+    </section>
+
+
+
+<!-- Modal Vert-->
+<div class="modal fade" id="vert" tabindex="-1" role="dialog" aria-labelledby="TheVert" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalles Te Verde</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body row">
+                <div class="col-6">
+                    <div class="row"><h4 class="col-12">Origen Japon</h4></div>
+                    <div class="row">
+                        <h6 class="col-6">Temperatura del Agua</h6>
+                        <p class="col-6">50 a 75°C</p>
+                    </div>
+                    <div class="row">
+                        <h6 class="col-6">Duración de la Infusión</h6>
+                        <p class="col-6">1 - 2 min</p>
+                    </div>
+                    <div class="row">
+                        <h6 class="col-6">Dosis para 30 cl</h6>
+                        <p class="col-6">6g</p>
+                    </div>
+                    <div class="row">
+                        <p class="col">Los tes de este origen son los que mayor fama tienen. Podemos encontrar miles de variedades de te, pero por norma general suelen tener un sabor más delicado que los tes verdes de otros origenes. Por lo general son más apreciados.</p>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row"><h4 class="col-12">Origen China</h4></div>
+                    <div class="row">
+                        <h6 class="col-6">Temperatura del Agua</h6>
+                        <p class="col-6">75°C</p>
+                    </div>
+                    <div class="row">
+                        <h6 class="col-6">Duración de la Infusión</h6>
+                        <p class="col-6">2 - 4 min</p>
+                    </div>
+                    <div class="row">
+                        <h6 class="col-6">Dosis para 30 cl</h6>
+                        <p class="col-6">6g</p>
+                    </div>
+                    <div class="row">
+                        <p class="col">No es un origen especialmente conocido por la calidad de sus tes verdes, pero si que existen ciertos valles que producen tes verdes de una calidad muy alta.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Noir-->
+<div class="modal fade" id="noir" tabindex="-1" role="dialog" aria-labelledby="TheNoir" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalles Te Negro</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body row">
+                <table class="table table-striped col-12">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Temperatura del Agua</th>
+                            <th scope="col">Duración de la Infusión</th>
+                            <th scope="col">Dosis para 30 cl</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">India - Darjeeling de Primavera</th>
+                            <td>85°C</td>
+                            <td>3'30 - 3'45 min</td>
+                            <td>6 - 8g</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">India – Darjeeling Grands Crus</th>
+                            <td>85°C</td>
+                            <td>3'45 - 4 min</td>
+                            <td>6 - 8g</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">India – Darjeeling Otros Períodos</th>
+                            <td>90°C</td>
+                            <td>4 - 5 min</td>
+                            <td>6 - 8g</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">India – Assam</th>
+                            <td>90°C</td>
+                            <td>3 - 4 min</td>
+                            <td>6g</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">China</th>
+                            <td>90°C</td>
+                            <td>4 - 5 min</td>
+                            <td>6g</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sri Lanka y otros origines</th>
+                            <td>90°C</td>
+                            <td>3 - 5 min</td>
+                            <td>6g</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Blanc-->
+<div class="modal fade" id="blanc" tabindex="-1" role="dialog" aria-labelledby="TheBlanc" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalles Te Blanco</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body row">
+                <table class="table table-striped col-12">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Temperatura del Agua</th>
+                            <th scope="col">Duración de la Infusión</th>
+                            <th scope="col">Dosis para 30 cl</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">China</th>
+                            <td>70°C - 75°C</td>
+                            <td>5 - 10 min</td>
+                            <td>6g</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"> Otros origenes</th>
+                            <td>70°C - 75°C</td>
+                            <td>4 - 8 min</td>
+                            <td>6g</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Oolong-->
+<div class="modal fade" id="oolong" tabindex="-1" role="dialog" aria-labelledby="TheOolong" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalles Te Oolong</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body row">
+                <table class="table table-striped col-12">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Temperatura del Agua</th>
+                            <th scope="col">Duración de la Infusión</th>
+                            <th scope="col">Dosis para 30 cl</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Tes Oolong</th>
+                            <td>95°C</td>
+                            <td>5 - 7 min</td>
+                            <td>8 - 10g</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Preparación con Gong Fu Cha</th>
+                            <td>95°C</td>
+                            <td>Por pasajes de 20 seg - 1 min</td>
+                            <td>6g</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Pu Erh-->
+<div class="modal fade" id="puerh" tabindex="-1" role="dialog" aria-labelledby="Thepuerh" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalles Te Pu Erh</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body row">
+                <div class="col-12">
+                    <div class="row">
+                        <h6 class="col-6">Temperatura del Agua</h6>
+                        <p class="col-6">95°C</p>
+                    </div>
+                    <div class="row">
+                        <h6 class="col-6">Duración de la Infusión</h6>
+                        <p class="col-6">4 - 5 min</p>
+                    </div>
+                    <div class="row">
+                        <h6 class="col-6">Dosis para 30 cl</h6>
+                        <p class="col-6">6g</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>En Hojas sueltas</h4>
+                            <p>Tipo de Pu Erh apto para el consumo diario. Suele estar compuesto de los restos de hojas que no fueron comprimidas en galletas.</p>
+                        </div>
+                        <div class="col-6">
+                            <h4>En Hojas comprimidas</h4>
+                            <p>Tipo de Pu Erh apto para una maduración de varios años y unicamente para las ocasiones más especiales. Era es te que recorria el gran camino del te que atravesaba toda china. Es tipico de la provincia de Yunan y el Fujian.</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>Pu Erh Shu</h4>
+                            <p>Pu Erh comprimido "Cocido". Elaborado con una tecnica de los años 70 que pretendia imitar el resultado de un Pu Erh Sheng con 10 años de maduración. En su lugar nacio un nuevo tipo de Pu Erh más cremoso que uno tradicional.</p>
+                        </div>
+                        <div class="col-6">
+                            <h4>Pu Erh Sheng</h4>
+                            <p>Pu Erh comprimido "Crudo". Es el tradicional, madurado durante al menos 10 años para alcanzar su maximo nivel gustativo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Ajouter un The-->
+<div class="modal fade" id="ajouter" tabindex="-1" role="dialog" aria-labelledby="ajouter" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Añadir un Te</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="ajout" method="post" action="/ajouter">
+                    <input  type="text" id="identificateur" name="identificateur" value="{{ datas.count() + 1 }}">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="nom" name="nom" placeholder="Nombre">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="description" name="description" placeholder="Descripción" maxlength="200" rows="3" aria-describedby="Hdescription"></textarea>
+                        <small id="Hdescription" class="form-text text-muted">Máx: 200 caracteres.</small>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="tipe" name="tipe">
+                            <option selected="selected" value="pas">Tipo de Te</option>
+                            <option value="vert">Verde</option>
+                            <option value="noir">Negro</option>
+                            <option value="bleu">Oolong</option>
+                            <option value="rouge">Pu Erh</option>
+                            <option value="blanc">Blanco</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-4">
+                            <input type="text" class="form-control" id="duration" name="duration" aria-describedby="Ddescription" placeholder="Tiempo de Infusión">
+                            <small id="Ddescription" class="form-text text-muted">Ej: 3 min, 3 - 4 min, 3'30 min, 30 seg</small>
+                        </div>
+                        <div class="form-group col-4">
+                            <input type="text" class="form-control" id="tempe" name="tempe" aria-describedby="Tdescription" placeholder="Temperatura del Agua">
+                            <small id="Tdescription" class="form-text text-muted">Ej: 90*C, 50 - 75*C</small>
+                        </div>
+                        <div class="form-group col-4">
+                            <input type="text" class="form-control" id="grames" name="grames" aria-describedby="Qdescription" placeholder="Gramos por cada 30 cl">
+                            <small id="Qdescription" class="form-text text-muted">Ej: 6g, 6 - 8g</small>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button form="ajout" type="submit" class="btn btn-success">Añadir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
