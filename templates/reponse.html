@@ -66,7 +66,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body row">
+                            <div class="modal-body row" id="printThis{{data.identificateur}}">
                                 <div class="col-12">
                                     <div class="row">
                                         <h6 class="col-3"><strong>Nombre</strong></h6>
@@ -114,6 +114,24 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="button" id="Print{{ data.identificateur }}" class="btn btn-primary">Imprimir</button>
+                                <script>
+                                    document.getElementById("Print{{ data.identificateur }}").onclick = () => {
+                                        printElement(document.getElementById("printThis{{ data.identificateur }}"));
+                                    };
+                                    function printElement(elem) {
+                                        var domClone = elem.cloneNode(true);
+                                        var $printSection = document.getElementById("printSection");
+                                        if (!$printSection) {
+                                            var $printSection = document.createElement("div");
+                                            $printSection.id = "printSection";
+                                            document.body.appendChild($printSection);
+                                        }
+                                        $printSection.innerHTML = "";
+                                        $printSection.appendChild(domClone);
+                                        window.print();
+                                    }
+                                </script>
                             </div>
                         </div>
                     </div>

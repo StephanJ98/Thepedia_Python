@@ -60,14 +60,13 @@ class JaimeHandler(webapp2.RequestHandler):
     def post(self):
         id = self.request.get("identifi")
         like = self.request.get("jaime")
-        thes = The.query().order(The.likes)
+        thes = The.query().order(-The.likes)
         if thes.count() != 0:
             for data in thes:
                 if data.identificateur == id:
                     data.likes = unicode(int(like) + 1)
-                    print("Ok")
                     data.put()
-        thes = The.query().order(The.nombre)
+        thes = The.query().order(-The.likes)
         jinja = jinja2.get_jinja2(app=self.app)
         valeurs = {
             "datas": thes
