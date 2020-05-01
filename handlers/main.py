@@ -5,6 +5,7 @@ from webapp2_extras import jinja2
 from model.The import The
 
 
+# Gestiona la funcionalidad de añadir un núevo te al datastore y redirige hacia la pagina principal.
 class MainHandler(webapp2.RequestHandler):
     def post(self):
         nom = self.request.get("nom")
@@ -16,7 +17,7 @@ class MainHandler(webapp2.RequestHandler):
         id = self.request.get("identificateur")
         like = self.request.get("likes")
         the = The(nombre=nom, descripcion=description, tipo=tipe,
-                  tiempoInfusion=duration, temperatura=temperature, gramos=grames,identificateur=id,likes=like)
+                  tiempoInfusion=duration, temperatura=temperature, gramos=grames, identificateur=id, likes=like)
         the.put()
         thes = The.query().order(The.nombre)
         jinja = jinja2.get_jinja2(app=self.app)
@@ -26,6 +27,7 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write(jinja.render_template("main.html", **valeurs))
 
 
+# Gestiona la funcionalidad de mostrar los tes almacenados en el datastore.
 class GetHandler(webapp2.RequestHandler):
     def get(self):
         thes = The.query().order(-The.likes)
@@ -36,6 +38,7 @@ class GetHandler(webapp2.RequestHandler):
         self.response.write(jinja.render_template("reponse.html", **valeurs))
 
 
+# Gestiona la parte back-end de la redirección de la pagina de carga a la pagina principal.
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
         thes = The.query().order(The.nombre)
@@ -56,6 +59,7 @@ class TheHandler(webapp2.RequestHandler):
         self.response.write(jinja.render_template("main.html", **valeurs))
 
 
+# Gestiona la funcionalidad de añadir un 'like' a un te.
 class JaimeHandler(webapp2.RequestHandler):
     def post(self):
         id = self.request.get("identifi")
