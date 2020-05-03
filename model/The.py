@@ -7,6 +7,7 @@ class The(ndb.Model):
     tipo = ndb.StringProperty()
     tiempoInfusion = ndb.StringProperty()
     temperatura = ndb.StringProperty()
+    origen = ndb.StringProperty()
     gramos = ndb.StringProperty()
     identificateur = ndb.IntegerProperty()
     likes = ndb.IntegerProperty(indexed=True)

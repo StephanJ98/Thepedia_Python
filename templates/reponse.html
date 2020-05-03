@@ -68,43 +68,45 @@
                             <div class="modal-body row" id="printThis{{data.identificateur}}">
                                 <div class="col-12">
                                     <div class="row">
-                                        <h6 class="col-3"><strong>Nombre</strong></h6>
-                                        <p class="col">{{ data.nombre }}</p>
+                                        <h6 class="col-2"><strong>Nombre</strong></h6>
+                                        <p class="col-4">{{ data.nombre }}</p>
+                                        <h6 class="col-2"><strong>Orígen</strong></h6>
+                                        <p class="col-4">{{ data.origen }}</p>
                                     </div>
+                                    <hr>
+                                    <div class="row">
+                                        <h6 class="col-2"><strong>Tipo</strong></h6>
+                                        {% if data.tipo == "vert" %}
+                                            <p class="col-4">Verde</p>
+                                        {% endif %}
+                                        {% if data.tipo == "noir" %}
+                                            <p class="col-4">Negro</p>
+                                        {% endif %}
+                                        {% if data.tipo == "bleu" %}
+                                            <p class="col-4">Oolong</p>
+                                        {% endif %}
+                                        {% if data.tipo == "rouge" %}
+                                            <p class="col-4">Pu Erh</p>
+                                        {% endif %}
+                                        {% if data.tipo == "blanc" %}
+                                            <p class="col-4">Blanco</p>
+                                        {% endif %}
+                                        <h6 class="col-3"><strong>Gramos por cada 30 cl</strong></h6>
+                                        <p class="col-2">{{ data.gramos }}</p>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <h6 class="col-3"><strong>Tiempo de Infusión</strong></h6>
+                                        <p class="col-3">{{ data.tiempoInfusion }}</p>
+                                        <h6 class="col-4"><strong>Temperatura de Infusión</strong></h6>
+                                        <p class="col-2">{{ data.temperatura }}</p>
+                                    </div>
+                                    <hr>
                                     <div class="row">
                                         <h6 class="col-3"><strong>Descripción</strong></h6>
                                         <p class="col">{{ data.descripcion }}</p>
                                     </div>
-                                    <div class="row">
-                                        <h6 class="col-3"><strong>Tipo</strong></h6>
-                                        {% if data.tipo == "vert" %}
-                                            <p class="col">Verde</p>
-                                        {% endif %}
-                                        {% if data.tipo == "noir" %}
-                                            <p class="col">Negro</p>
-                                        {% endif %}
-                                        {% if data.tipo == "bleu" %}
-                                            <p class="col">Oolong</p>
-                                        {% endif %}
-                                        {% if data.tipo == "rouge" %}
-                                            <p class="col">Pu Erh</p>
-                                        {% endif %}
-                                        {% if data.tipo == "blanc" %}
-                                            <p class="col">Blanco</p>
-                                        {% endif %}
-                                    </div>
-                                    <div class="row">
-                                        <h6 class="col-3"><strong>Tiempo de Infusión</strong></h6>
-                                        <p class="col">{{ data.tiempoInfusion }}</p>
-                                    </div>
-                                    <div class="row">
-                                        <h6 class="col-3"><strong>Temperatura de Infusión</strong></h6>
-                                        <p class="col">{{ data.temperatura }}</p>
-                                    </div>
-                                    <div class="row">
-                                        <h6 class="col-3"><strong>Gramos por cada 30 cl</strong></h6>
-                                        <p class="col">{{ data.gramos }}</p>
-                                    </div>
+                                    <hr>
                                     <div class="row">
                                         <h6 class="col-3"><strong>Número de Likes</strong></h6>
                                         <p class="col">{{ data.likes }} likes</p>
@@ -432,15 +434,20 @@
                         <textarea class="form-control" id="description" name="description" placeholder="Descripción" maxlength="250" rows="3" aria-describedby="Hdescription"></textarea>
                         <small id="Hdescription" class="form-text text-muted">Máx: 250 caracteres.</small>
                     </div>
-                    <div class="form-group">
-                        <select class="form-control" id="tipe" name="tipe">
-                            <option selected="selected" value="pas">Tipo de Te</option>
-                            <option value="vert">Verde</option>
-                            <option value="noir">Negro</option>
-                            <option value="bleu">Oolong</option>
-                            <option value="rouge">Pu Erh</option>
-                            <option value="blanc">Blanco</option>
-                        </select>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <select class="form-control" id="tipe" name="tipe">
+                                <option selected="selected" value="pas">Tipo de Te</option>
+                                <option value="vert">Verde</option>
+                                <option value="noir">Negro</option>
+                                <option value="bleu">Oolong</option>
+                                <option value="rouge">Pu Erh</option>
+                                <option value="blanc">Blanco</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-6">
+                            <input type="text" class="form-control" id="origen" name="origen" aria-describedby="Odescription" placeholder="Región o País de Orígen">
+                        </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-4">

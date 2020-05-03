@@ -327,15 +327,20 @@
                         <textarea class="form-control" id="description" name="description" placeholder="Descripción" maxlength="200" rows="3" aria-describedby="Hdescription"></textarea>
                         <small id="Hdescription" class="form-text text-muted">Máx: 200 caracteres.</small>
                     </div>
-                    <div class="form-group">
-                        <select class="form-control" id="tipe" name="tipe">
-                            <option selected="selected" value="pas">Tipo de Te</option>
-                            <option value="vert">Verde</option>
-                            <option value="noir">Negro</option>
-                            <option value="bleu">Oolong</option>
-                            <option value="rouge">Pu Erh</option>
-                            <option value="blanc">Blanco</option>
-                        </select>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <select class="form-control" id="tipe" name="tipe">
+                                <option selected="selected" value="pas">Tipo de Te</option>
+                                <option value="vert">Verde</option>
+                                <option value="noir">Negro</option>
+                                <option value="bleu">Oolong</option>
+                                <option value="rouge">Pu Erh</option>
+                                <option value="blanc">Blanco</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-6">
+                            <input type="text" class="form-control" id="origen" name="origen" aria-describedby="Odescription" placeholder="Región o País de Orígen">
+                        </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-4">

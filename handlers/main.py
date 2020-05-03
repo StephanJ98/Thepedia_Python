@@ -13,10 +13,11 @@ class MainHandler(webapp2.RequestHandler):
         duration = self.request.get("duration")
         temperature = self.request.get("tempe")
         grames = self.request.get("grames")
+        origen = self.request.get("origen")
         id = int(int(The.query().order(-The.likes).count()) + 1)
         like = int(self.request.get("likes"))
-        the = The(nombre=nom, descripcion=description, tipo=tipe,
-                  tiempoInfusion=duration, temperatura=temperature, gramos=grames, identificateur=id, likes=like)
+        the = The(nombre=nom, descripcion=description, tipo=tipe, tiempoInfusion=duration,
+                  temperatura=temperature, gramos=grames, identificateur=id, likes=like, origen=origen)
         the.put()
         thes = The.query().order(-The.likes)
         jinja = jinja2.get_jinja2(app=self.app)
