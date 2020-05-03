@@ -40,7 +40,7 @@
                             <h5 class="card-title col-12">{{ data.nombre }}</h5>
                         </div>
                         <div class="row">
-                            <p class="card-text col-12">{{ data.descripcion }}</p>
+                            <textarea readonly="readonly" rows="4" class="card-text col-12 {{ data.tipo }}t">{{ data.descripcion }}</textarea>
                         </div>
                         <div class="row centreur">
                             <div class="col-6">
@@ -48,8 +48,7 @@
                             </div>
                             <div class="col-6">
                                 <form action="/gusta" method="post">
-                                    <input style="display: none" type="text" id="jaime" name="jaime" value="{{ data.likes }}">
-                                    <input style="display: none" type="text" id="identifi" name="identifi" value="{{ data.identificateur }}">
+                                    <input style="display: none" type="number" id="identifi" name="identifi" value="{{ data.identificateur }}">
                                     <button type="submit" class="btn btn-primary"><strong>Me gusta</strong></button>
                                 </form>
                             </div>
@@ -116,20 +115,25 @@
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                 <button type="button" id="Print{{ data.identificateur }}" class="btn btn-primary">Imprimir</button>
                                 <script>
-                                    document.getElementById("Print{{ data.identificateur }}").onclick = () => {
+                                    document.getElementById("Print{{ data.identificateur }}").onclick = function() {
                                         printElement(document.getElementById("printThis{{ data.identificateur }}"));
                                     };
                                     function printElement(elem) {
-                                        let domClone = elem.cloneNode(true);
-                                        let $printSection = document.getElementById("printSection");
-                                        if (!$printSection) {
-                                            let $printSection = document.createElement("div");
-                                            $printSection.id = "printSection";
-                                            document.body.appendChild($printSection);
+                                        const domClone = elem.cloneNode(true);
+                                        const impresion = document.getElementById("printSection");
+                                        if (!impresion) {
+                                            const impresion = document.createElement("div");
+                                            impresion.id = "printSection";
+                                            document.body.appendChild(impresion);
+                                            impresion.innerHTML = "";
+                                            impresion.appendChild(domClone);
+                                            window.print();
+                                        } else {
+                                            impresion.innerHTML = "";
+                                            impresion.appendChild(domClone);
+                                            window.print();
                                         }
-                                        $printSection.innerHTML = "";
-                                        $printSection.appendChild(domClone);
-                                        window.print();
+
                                     }
                                 </script>
                             </div>
@@ -420,14 +424,13 @@
             </div>
             <div class="modal-body">
                 <form role="form" id="ajout" method="post" action="/ajouter">
-                    <input style="display: none" type="text" id="identificateur" name="identificateur" value="{{ datas.count() + 1 }}">
                     <input style="display: none" type="text" id="likes" name="likes" value="0">
                     <div class="form-group">
                         <input type="text" class="form-control" id="nom" name="nom" placeholder="Nombre">
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" id="description" name="description" placeholder="Descripción" maxlength="200" rows="3" aria-describedby="Hdescription"></textarea>
-                        <small id="Hdescription" class="form-text text-muted">Máx: 200 caracteres.</small>
+                        <textarea class="form-control" id="description" name="description" placeholder="Descripción" maxlength="250" rows="3" aria-describedby="Hdescription"></textarea>
+                        <small id="Hdescription" class="form-text text-muted">Máx: 250 caracteres.</small>
                     </div>
                     <div class="form-group">
                         <select class="form-control" id="tipe" name="tipe">

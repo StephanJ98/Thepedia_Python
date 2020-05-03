@@ -7,7 +7,7 @@ body {
     animation:fond 70s infinite;
 }
 @keyframes fond{
-    /*  Il faut precharger l'image suivante pour eviter les flash blancs*/
+    /* Il faut precharger l'image suivante pour eviter les flash blancs */
     0% {
         background: url("/static/te4.jpg") fixed center;
         background-size: cover;
@@ -128,7 +128,7 @@ body {
 }
 .bleu {
     background-color: #9fa060;
-    color: #d6dace;
+    color: #24252a;
     border: none;
 }
 .ajoutThe{
@@ -215,4 +215,18 @@ body {
         left:0;
         top:0;
     }
+}
+.vertt, .noirt, .rouget {
+    background: transparent;
+    border: none;
+    color: #d6dace;
+    resize: none;
+    outline: none;
+}
+.blanct, .bleut {
+    background: transparent;
+    border: none;
+    color: #24252a;
+    resize: none;
+    outline: none;
 }
