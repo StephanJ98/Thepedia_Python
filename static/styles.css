@@ -196,6 +196,7 @@ body {
     color: #d6dace;
 }
 .centreur {
+    padding-top: 3px;
     text-align: center;
     color: #d6dace;
 }
@@ -231,7 +232,7 @@ body {
     resize: none;
     outline: none;
 }
-.img_montre {
+.img_m {
     font-size: 20px;
     margin-top: 2px;
 }
