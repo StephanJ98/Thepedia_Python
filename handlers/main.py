@@ -47,16 +47,6 @@ class HomeHandler(webapp2.RequestHandler):
         self.response.write(jinja.render_template("main.html", **valeurs))
 
 
-class TheHandler(webapp2.RequestHandler):
-    def get(self):
-        thes = The.query().order(-The.likes)
-        jinja = jinja2.get_jinja2(app=self.app)
-        valeurs = {
-            "datas": thes
-        }
-        self.response.write(jinja.render_template("main.html", **valeurs))
-
-
 class JaimeHandler(webapp2.RequestHandler):
     def post(self):
         id = self.request.get("identifi")
@@ -66,15 +56,27 @@ class JaimeHandler(webapp2.RequestHandler):
                 if str(data.identificateur) == str(id):
                     data.likes = int(int(data.likes) + 1)
                     data.put()
-        thesActualise = The.query().order(-The.likes)
+        thes_actualise = The.query().order(-The.likes)
         jinja = jinja2.get_jinja2(app=self.app)
         valeurs = {
-            "datas": thesActualise
+            "datas": thes_actualise
         }
         self.response.write(jinja.render_template("reponse.html", **valeurs))
 
 
-app = webapp2.WSGIApplication([('/ajouter?', MainHandler),
+class RechercheHandler(webapp2.RequestHandler):
+    def post(self):
+        nom = str(self.request.get("nomT"))
+        thes = The.query(The.tipo == nom).order(-The.likes)
+        jinja = jinja2.get_jinja2(app=self.app)
+        valeurs = {
+            "datas": thes
+        }
+        self.response.write(jinja.render_template("reponse.html", **valeurs))
+
+
+app = webapp2.WSGIApplication([('/home', HomeHandler),
                                ('/montrer', GetHandler),
-                               ('/home', HomeHandler),
-                               ('/gusta?', JaimeHandler)], debug=True)
+                               ('/ajouter?', MainHandler),
+                               ('/gusta?', JaimeHandler),
+                               ('/recherche?', RechercheHandler)], debug=True)

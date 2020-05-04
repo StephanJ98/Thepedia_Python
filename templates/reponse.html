@@ -31,7 +31,23 @@
         <button type="button" class="btn col" data-toggle="modal" data-target="#puerh"><strong>Pu Erh</strong></button>
         <button type="button" class="btn col" data-toggle="modal" data-target="#oolong"><strong>Oolong</strong></button>
     </section>
-    <section class="row corps">
+    <section class="row recherche">
+        <form class="input-group offset-4 col-4" method="post" action="/recherche">
+            <select class="form-control rechercheImp" id="nomT" name="nomT" type="text">
+                <option selected="selected" value="vert">Verde</option>
+                <option value="noir">Negro</option>
+                <option value="bleu">Oolong</option>
+                <option value="rouge">Pu Erh</option>
+                <option value="blanc">Blanco</option>
+            </select>
+            <div class="input-group-append">
+                <button type="submit" class="input-group-text rechercheImp" id="basic-text1">
+                    <i class="fa fa-search text-grey" aria-hidden="true"></i>
+                </button>
+            </div>
+        </form>
+    </section>
+    <section class="row">
         {% if datas.count() > 0 %}
             {% for data in datas %}
                 <div class="card col-lg-2 col-md-3 {{ data.tipo }}" style="margin: 30px;">

@@ -2,7 +2,7 @@ from google.appengine.ext import ndb
 
 
 class The(ndb.Model):
-    nombre = ndb.StringProperty(indexed=True)
+    nombre = ndb.StringProperty()
     descripcion = ndb.TextProperty()
     tipo = ndb.StringProperty()
     tiempoInfusion = ndb.StringProperty()
