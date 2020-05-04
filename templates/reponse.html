@@ -43,7 +43,12 @@
                             <textarea readonly="readonly" rows="4" class="card-text col-12 {{ data.tipo }}t">{{ data.descripcion }}</textarea>
                         </div>
                         <div class="row centreur">
-                            <div class="col-6">
+                            <div class="col-3">
+                                <button id="timerbtn{{ data.identificateur }}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#id{{ data.identificateur }}chrono">
+                                    <i class="fa fa-clock-o img_montre"></i>
+                                </button>
+                            </div>
+                            <div class="col-3">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#id{{ data.identificateur }}"><strong>Ver</strong></button>
                             </div>
                             <div class="col-6">
@@ -135,9 +140,74 @@
                                             impresion.appendChild(domClone);
                                             window.print();
                                         }
-
                                     }
                                 </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Chrono-->
+                <div class="modal fade" id="id{{ data.identificateur }}chrono" tabindex="-1" role="dialog" aria-labelledby="Detalles" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Chrono {{ data.nombre }} </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body row" >
+                                <div class="col-12">Tiempo restante <span id="timer{{ data.identificateur }}">{{ data.tiempoInfusion }}</span></div>
+                                <script>
+                                    document.getElementById("timerbtn{{ data.identificateur }}").onclick = function() {
+                                        const donnee = document.getElementById("timer{{ data.identificateur }}").innerText.split(" ");
+                                        let unite = donnee[1];
+                                        let last = donnee[donnee.length - 1];
+                                        let sec, min;
+                                        switch (unite) {
+                                            case "min":
+                                                min = donnee[0];
+                                                sec = 0;
+                                                break;
+                                            case "-":
+                                                unite = donnee[donnee.length - 1];
+                                                if (unite == "min"){
+                                                    min = donnee[2];
+                                                    sec = 0;
+                                                }
+                                                break;
+                                            case "seg":
+                                                min = 0;
+                                                sec = donnee[0];
+                                                break;
+                                            default:
+                                                //None
+                                        }
+                                        if(last == "..."){
+                                            min = 0;
+                                            sec = 10;
+                                        }
+                                        setInterval(function() {
+                                            document.getElementById("timer{{ data.identificateur }}").innerHTML = min + " : " + sec;
+                                            if (min == 0 && sec == 0){
+                                                min = 0;
+                                                sec = 0;
+                                            } else {
+                                                if (sec == 0) {
+                                                    min--;
+                                                    sec = 60;
+                                                    if (min == 0) {
+                                                        min = 0;
+                                                    }
+                                                }
+                                                sec--;
+                                            }
+                                        }, 1000);
+                                    }
+                                </script>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                             </div>
                         </div>
                     </div>
@@ -431,36 +501,79 @@
                         <input type="text" class="form-control" id="nom" name="nom" placeholder="Nombre">
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" id="description" name="description" placeholder="Descripción" maxlength="250" rows="3" aria-describedby="Hdescription"></textarea>
-                        <small id="Hdescription" class="form-text text-muted">Máx: 250 caracteres.</small>
+                        <textarea class="form-control" id="description" name="description" placeholder="Descripción" maxlength="200" rows="3" aria-describedby="Hdescription"></textarea>
+                        <small id="Hdescription" class="form-text text-muted">Máx: 200 caracteres.</small>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-6">
-                            <select class="form-control" id="tipe" name="tipe">
-                                <option selected="selected" value="pas">Tipo de Te</option>
-                                <option value="vert">Verde</option>
+                            <select class="form-control" id="tipe" name="tipe" aria-describedby="Tidescription">
+                                <option selected="selected" value="vert">Verde</option>
                                 <option value="noir">Negro</option>
                                 <option value="bleu">Oolong</option>
                                 <option value="rouge">Pu Erh</option>
                                 <option value="blanc">Blanco</option>
                             </select>
+                            <small id="Tidescription" class="form-text text-muted">Tipo de Té</small>
                         </div>
                         <div class="form-group col-6">
-                            <input type="text" class="form-control" id="origen" name="origen" aria-describedby="Odescription" placeholder="Región o País de Orígen">
+                            <input type="text" class="form-control" id="origen" name="origen" placeholder="Región o País de Orígen">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-4">
-                            <input type="text" class="form-control" id="duration" name="duration" aria-describedby="Ddescription" placeholder="Tiempo de Infusión">
-                            <small id="Ddescription" class="form-text text-muted">Ej: 3 min, 3 - 4 min, 3'30 min, 30 seg</small>
+                            <select class="form-control" id="duration" name="duration" aria-describedby="Ddescription">
+                                <option value="10 seg, 30 seg ...">10seg, 30seg, ...</option>
+                                <option value="30 seg - 1 min">30seg - 1min</option>
+                                <option value="1 min">1min</option>
+                                <option selected="selected" value="1 - 2 min">1 - 2min</option>
+                                <option value="2 min">2min</option>
+                                <option value="2 - 3 min">2 - 3min</option>
+                                <option value="3 min">3min</option>
+                                <option value="3 - 4 min">3 - 4min</option>
+                                <option value="4 min">4min</option>
+                                <option value="4 - 5 min">4 - 5min</option>
+                                <option value="5 min">5min</option>
+                                <option value="2 - 4 min">2 - 4min</option>
+                                <option value="2 - 5 min">2 - 5min</option>
+                                <option value="3 - 5 min">3 - 5min</option>
+                                <option value="5 - 10 min">5 - 10min</option>
+                                <option value="10 min">10min</option>
+                            </select>
+                            <small id="Ddescription" class="form-text text-muted">Tiempo de Infusión</small>
                         </div>
                         <div class="form-group col-4">
-                            <input type="text" class="form-control" id="tempe" name="tempe" aria-describedby="Tdescription" placeholder="Temperatura del Agua">
-                            <small id="Tdescription" class="form-text text-muted">Ej: 90*C, 50 - 75*C</small>
+                            <select class="form-control" id="tempe" name="tempe" aria-describedby="Tdescription">
+                                <option value="50*C">50*C</option>
+                                <option value="55*C">55*C</option>
+                                <option value="50 - 55*C">50 - 55*C</option>
+                                <option value="60*C">60*C</option>
+                                <option value="65*C">65*C</option>
+                                <option value="60 - 65*C">60 - 65*C</option>
+                                <option selected="selected" value="70*C">70*C</option>
+                                <option value="75*C">75*C</option>
+                                <option value="70 - 75*C">70 - 75*C</option>
+                                <option value="80*C">80*C</option>
+                                <option value="85*C">85*C</option>
+                                <option value="80 - 85*C">80 - 85*C</option>
+                                <option value="90*C">90*C</option>
+                                <option value="95*C">95*C</option>
+                                <option value="90 - 95*C">90 - 95*C</option>
+                            </select>
+                            <small id="Tdescription" class="form-text text-muted">Temperatura del Agua</small>
                         </div>
                         <div class="form-group col-4">
-                            <input type="text" class="form-control" id="grames" name="grames" aria-describedby="Qdescription" placeholder="Gramos por cada 30 cl">
-                            <small id="Qdescription" class="form-text text-muted">Ej: 6g, 6 - 8g</small>
+                            <select class="form-control" id="grames" name="grames" aria-describedby="Qdescription">
+                                <option value="2g">2g</option>
+                                <option value="3g">3g</option>
+                                <option value="4g">4g</option>
+                                <option value="5g">5g</option>
+                                <option selected="selected" value="6g">6g</option>
+                                <option value="7g">7g</option>
+                                <option value="8g">8g</option>
+                                <option value="9g">9g</option>
+                                <option value="10g">10g</option>
+                            </select>
+                            <small id="Qdescription" class="form-text text-muted">Gramos por cada 30 cl</small>
                         </div>
                     </div>
                 </form>
