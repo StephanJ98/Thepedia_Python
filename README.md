@@ -1,8 +1,8 @@
-# Thepedia
+# :tea: Thepedia
 ## Versión Python
 Pagina web diseñada para servir como biblioteca de tés online.
 
-# Funcionalidades
+# :rocket: Funcionalidades
 -   En cualquiera de las paginas si se pulsa sobre el logo "***的 - Thepedia***" se redirigira hacia la pagina de inicio.
 -   **En la pagina de inicio encontraremos**
     -   En la cabecera:
