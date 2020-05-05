@@ -2,7 +2,7 @@
 ## Versión Python
 Pagina web diseñada para servir como biblioteca de tés online.
 
-# :rocket: Funcionalidades
+# :pencil: Descripción
 -   En cualquiera de las paginas si se pulsa sobre el logo "***的 - Thepedia***" se redirigira hacia la pagina de inicio.
 -   **En la pagina de inicio encontraremos**
     -   En la cabecera:
@@ -24,7 +24,7 @@ Pagina web diseñada para servir como biblioteca de tés online.
                     -   *Ver*: Muestra un desplegable donde es visible información más detallada del té. Además permite imprimir un resumen de la información disponible.
                     -   *Gusta*: Permite significar a la web que este té nos gusta. Por lo que lo mostrara en una posición preferente en el momento de mostrar los tés de la pagina.
                 -   El fondo de cada ficha cambiara según el té sea de un tipo u otro.
--   **Funcionalidades generales:**
+-   :rocket: **Funcionalidades generales:**
     -   *Añadir un té*
         -   Parametros a introducir:
             -   Nombre
@@ -49,4 +49,6 @@ Pagina web diseñada para servir como biblioteca de tés online.
     -   *Buscar un tipo de té*
         -   Permite mostrar unicamente los tés que sea del tipo seleccionado.
         -   Para volver atras simplemente usar el boton "***的 - Thepedia***"
-    
+
+# :camera: Capturas de pantalla con ejemplos
+![alt text](./ImagenesREADME/main.png)
