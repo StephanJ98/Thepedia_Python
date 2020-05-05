@@ -51,4 +51,18 @@ Pagina web diseñada para servir como biblioteca de tés online.
         -   Para volver atras simplemente usar el boton "***的 - Thepedia***"
 
 # :camera: Capturas de pantalla con ejemplos
+
+## Pantalla de Inicio
+![alt text](./ImagenesREADME/inicio.png)
+
+## Pantalla correspondiente a la función *Añadir un té*
+![alt text](./ImagenesREADME/anadir.png)
+
+## Pantalla correspondiente a la página *Ultimas Llegadas*
 ![alt text](./ImagenesREADME/main.png)
+
+## Pantalla correspondiente a la función de busqueda (*en este caso buscamos tés verdes*)
+![alt text](./ImagenesREADME/busqueda.png)
+
+## Pantalla correspondiente a la función *Ver* de un té
+![alt text](./ImagenesREADME/ver.png)
