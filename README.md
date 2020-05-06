@@ -8,7 +8,10 @@ Pagina web diseñada para servir como biblioteca de tés online.
     -   En la cabecera:
         -   El boton de redirección a inicio.
         -   5 botones que despliegan cada uno información general sonre cada tipo de té.
-        -   Un boton para añadir nuevos tés.
+        -   Un boton desplegable. Si lo accionamos mostramos:
+            -   Un boton de login/logout.
+            -   Un boton para añador un té. (Solo funcional si nos hemos logeado)
+            -   Un boton que despliega un pagina de conocimientos basicos sobre el té sus diferencia y su su origen.
     -   En el cuerpo:
         -   Un único boton que redirige a otra pagina donde se ven todos los tés disponibles en el datastore (*Ultimas Llegadas*).
 -   **El la pagina de *Ultimas Llegadas***
