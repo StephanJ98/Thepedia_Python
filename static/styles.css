@@ -246,3 +246,19 @@ body {
 .rechercheImp:focus {
     background-color: #d6dace;
 }
+.drop {
+    background-color: #546a2a
+}
+.dropI:hover {
+    background-color: transparent;
+}
+.navDrop {
+    color: #d6dace;
+    font-size: 25px;
+}
+.navDrop:hover {
+    color: #d6dace;
+}
+.log:hover {
+    transform: rotate(-25deg);
+}

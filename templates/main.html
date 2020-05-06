@@ -5,22 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="/static/leaf.svg"/>
     <title>ThePedia</title>
     <link rel="stylesheet" type="text/css" href="/static/styles.css">
 </head>
 <body class="container-fluid">
+{% if usr %}
     <header>
         <div id="header" class="row">
             <div class="col-4 titre_div">
-                <form action="/home" method="get" id="activateur">
+                <form action="/home" method="get">
                     <button type="submit" class="btn"><h3 class="titre">的 - Thepedia</h3></button>
                 </form>
             </div>
-            <div class="offset-6 col-2 titre_div">
-                <button type="button" class="btn ajoutThe" data-toggle="modal" data-target="#ajouter">
-                    <i class="fa fa-leaf img_header img_feuille"></i>
-                    <i class="fa fa-plus img_header"></i>
+            <div class="offset-6 col-2 dropdown titre_div">
+                <button class="btn ajoutThe navDrop dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-bars"></i>
                 </button>
+                <div class="dropdown-menu drop" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item dropI row" href="{{ usr_url }}">
+                        <button type="button" class="offset-1 col-11 btn ajoutThe same">
+                            <i class="fa fa-sign-out img_header log"></i>
+                        </button>
+                    </a>
+                    <a class="dropdown-item dropI row">
+                        <button type="button" class="offset-1 col-11 btn ajoutThe" data-toggle="modal" data-target="#ajouter">
+                            <i class="fa fa-leaf img_header img_feuille"></i>
+                            <i class="fa fa-plus img_header"></i>
+                        </button>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -110,55 +124,72 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body row">
-                <table class="table table-striped col-12">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Temperatura del Agua</th>
-                            <th scope="col">Duración de la Infusión</th>
-                            <th scope="col">Dosis para 30 cl</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">India - Darjeeling de Primavera</th>
-                            <td>85°C</td>
-                            <td>3'30 - 3'45 min</td>
-                            <td>6 - 8g</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">India – Darjeeling Grands Crus</th>
-                            <td>85°C</td>
-                            <td>3'45 - 4 min</td>
-                            <td>6 - 8g</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">India – Darjeeling Otros Períodos</th>
-                            <td>90°C</td>
-                            <td>4 - 5 min</td>
-                            <td>6 - 8g</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">India – Assam</th>
-                            <td>90°C</td>
-                            <td>3 - 4 min</td>
-                            <td>6g</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">China</th>
-                            <td>90°C</td>
-                            <td>4 - 5 min</td>
-                            <td>6g</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Sri Lanka y otros origines</th>
-                            <td>90°C</td>
-                            <td>3 - 5 min</td>
-                            <td>6g</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <p>El té negro es uno de los más consumidos, esto se debe principalmente a que Reino Unído lo propagó por sus colonia cuando comenzo a interesarse en el comercio de este producto. Además a diferencia del té verde que solo conserva su sabor un par de años, el té negro lo conserva mucho más tiempo lo que facilito su comercio en la ruta del té entre los paises asiáticos.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p>Los tés negros normalmente se nombran según la región donde son producidos. Las denominaciones más conocidad y prestigiosas son Lapsang Souchong, Keemun, Diang Hong, Ying de Hong para china; Assam, Ceylon, Darjeeling, Nigiri para India y Sry Lanka. Además existen otras regiones productoras ( Vietnam, Nepal y Turquia ) que tambien producen té interesantes.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p>Por norma general los tés procedentes de India y Ceilan son tratados por fuertes cantidades de pesticidas así que antes de consumir un té de este origen es recomendable asegurarse que se trata de un té Bio y de productores de renombre.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-striped col-12">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Temperatura</th>
+                                <th scope="col">Tiempo de Infusión</th>
+                                <th scope="col">Dosis (30 cl)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">China</th>
+                                <td>90°C</td>
+                                <td>4 - 5 min</td>
+                                <td>6g</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">India - Darjeeling de Primavera</th>
+                                <td>85°C</td>
+                                <td>3'30 - 3'45 min</td>
+                                <td>6 - 8g</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">India – Darjeeling Grands Crus</th>
+                                <td>85°C</td>
+                                <td>3'45 - 4 min</td>
+                                <td>6 - 8g</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">India – Darjeeling Otros Períodos</th>
+                                <td>90°C</td>
+                                <td>4 - 5 min</td>
+                                <td>6 - 8g</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">India – Assam</th>
+                                <td>90°C</td>
+                                <td>3 - 4 min</td>
+                                <td>6g</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Sri Lanka y Otros Origines</th>
+                                <td>90°C</td>
+                                <td>3 - 5 min</td>
+                                <td>6g</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -177,9 +208,15 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body row">
-                <table class="table table-striped col-12">
-                    <thead class="thead-dark">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <p>El té blanco es apreciado por su fineza y suavidad. Procede de delicadas yemas y hojas jóvenes de la planta que no son oxidadas como para la producción de otros tés. Es producido mayoritariamnete en China ya que se trataba de un té reservado para actos importantes. Los tés blancos más apreciados y de mejor calidad son aquellos procedentes de la provincia de Fujian en China.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-striped col-12">
+                    <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Temperatura del Agua</th>
@@ -202,6 +239,7 @@
                         </tr>
                     </tbody>
                 </table>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -220,8 +258,18 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body row">
-                <table class="table table-striped col-12">
+            <div class="modal-body">
+                <div class="row">
+                    <p class="col-12">El oolong tiene un sabor más parecido al té verde que al negro: no tiene el aroma dulce y rosáceo del té negro ni las fuertes notas herbales que caracterizan al té verde.</p>
+                </div>
+                <div class="row">
+                    <p class="col-12">Las hojas de té oolong se procesan de dos formas diferentes. Algunas variedades se enrollan en hojas largas y curvas, mientras otras se prensan a formas parecidas a bolas.</p>
+                </div>
+                <div class="row">
+                    <p class="col-12">Los Oolong de mayor prestigio proceden de las provincia Chinas de Fujian y Guangdong, de Taiwan y de Nepal.</p>
+                </div>
+                <div class="row">
+                    <table class="table table-striped col-12">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">#</th>
@@ -245,6 +293,7 @@
                         </tr>
                     </tbody>
                 </table>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -276,6 +325,18 @@
                     <div class="row">
                         <h6 class="col-6">Dosis para 30 cl</h6>
                         <p class="col-6">6g</p>
+                    </div>
+                    <div class="row">
+                        <p class="col-12">Los tés Pu Erh son un tipo de té un poco expecial ya que pueden ser oxidados o no pero todos sufren una fermentación que hace aparecer su sabor caracteristico y que les da un alto valor.</p>
+                    </div>
+                    <div class="row">
+                        <p class="col-12">Tradicionalmente solo se producia el Pu Erh crudo (Sheng), esto es el té se comprimia en tortas y se dejaban fermentar naturalmente y tardaban al rededor de 10 años en alcanzar la madurez.</p>
+                    </div>
+                    <div class="row">
+                        <p class="col-12">Pero desde el siglo pasado tambien se producen lo Pu Erh cocidos (Shu) que antes de ser comprimidos en tortas se riegan con agua y se dejan fermentar, para asi intentar imitar el proceso de fermentación natural, esto no sucedio pero si que descubrieron que el té preparado de esta forma tenia un muy buen sabor.</p>
+                    </div>
+                    <div class="row">
+                        <p class="col-12">Los mejores Pu Erh proceden del suroeste de China y las regiones fronterizas con Tibet, Birmania, Vietnam y Laos. Además son de destacar las iniciativas de producir Pu Erh en Africa.</p>
                     </div>
                     <div class="row">
                         <div class="col-6">
@@ -409,6 +470,468 @@
     </div>
 </div>
 
+{% else %}
+    <header>
+        <div id="header" class="row">
+            <div class="col-4 titre_div">
+                <form action="/home" method="get">
+                    <button type="submit" class="btn"><h3 class="titre">的 - Thepedia</h3></button>
+                </form>
+            </div>
+
+            <div class="offset-6 col-2 dropdown titre_div">
+                <button class="btn ajoutThe navDrop dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div class="dropdown-menu drop" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item dropI row" href="{{ usr_url }}">
+                        <button type="button" class="offset-1 col-11 btn ajoutThe same">
+                            <i class="fa fa-sign-in img_header log"></i>
+                        </button>
+                    </a>
+                    <a class="dropdown-item dropI row">
+                        <button title="Para usar esto tienes que Logearte" disabled="disabled" type="button" class="offset-1 col-11 btn ajoutThe" data-toggle="modal" data-target="#ajouter">
+                            <i class="fa fa-leaf img_header img_feuille"></i>
+                            <i class="fa fa-plus img_header"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="navbar" class="row">
+        <button type="button" class="btn col" data-toggle="modal" data-target="#vert"><strong>Verde</strong></button>
+        <button type="button" class="btn col" data-toggle="modal" data-target="#noir"><strong>Negro</strong></button>
+        <button type="button" class="btn col" data-toggle="modal" data-target="#blanc"><strong>Blanco</strong></button>
+        <button type="button" class="btn col" data-toggle="modal" data-target="#puerh"><strong>Pu Erh</strong></button>
+        <button type="button" class="btn col" data-toggle="modal" data-target="#oolong"><strong>Oolong</strong></button>
+    </section>
+    <section id="principale">
+        <div id="acces" class="bouton">
+            <form method="get" action="/montrer">
+                <button type="submit" id="idBouton" class="btn">
+                    <i class="fa fa-leaf img_feuille_bouton"></i>
+                    <strong class="text_feuille_bouton">
+                        <p>Últimas</p>
+                        <p>Llegadas</p>
+                    </strong>
+                </button>
+            </form>
+        </div>
+    </section>
+
+<!-- Modal Vert-->
+<div class="modal fade" id="vert" tabindex="-1" role="dialog" aria-labelledby="TheVert" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalles Te Verde</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body row">
+                <div class="col-6">
+                    <div class="row"><h4 class="col-12">Origen Japon</h4></div>
+                    <div class="row">
+                        <h6 class="col-6">Temperatura del Agua</h6>
+                        <p class="col-6">50 a 75°C</p>
+                    </div>
+                    <div class="row">
+                        <h6 class="col-6">Duración de la Infusión</h6>
+                        <p class="col-6">1 - 2 min</p>
+                    </div>
+                    <div class="row">
+                        <h6 class="col-6">Dosis para 30 cl</h6>
+                        <p class="col-6">6g</p>
+                    </div>
+                    <div class="row">
+                        <p class="col">Los tes de este origen son los que mayor fama tienen. Podemos encontrar miles de variedades de te, pero por norma general suelen tener un sabor más delicado que los tes verdes de otros origenes. Por lo general son más apreciados.</p>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row"><h4 class="col-12">Origen China</h4></div>
+                    <div class="row">
+                        <h6 class="col-6">Temperatura del Agua</h6>
+                        <p class="col-6">75°C</p>
+                    </div>
+                    <div class="row">
+                        <h6 class="col-6">Duración de la Infusión</h6>
+                        <p class="col-6">2 - 4 min</p>
+                    </div>
+                    <div class="row">
+                        <h6 class="col-6">Dosis para 30 cl</h6>
+                        <p class="col-6">6g</p>
+                    </div>
+                    <div class="row">
+                        <p class="col">No es un origen especialmente conocido por la calidad de sus tes verdes, pero si que existen ciertos valles que producen tes verdes de una calidad muy alta.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Noir-->
+<div class="modal fade" id="noir" tabindex="-1" role="dialog" aria-labelledby="TheNoir" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalles Te Negro</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <p>El té negro es uno de los más consumidos, esto se debe principalmente a que Reino Unído lo propagó por sus colonia cuando comenzo a interesarse en el comercio de este producto. Además a diferencia del té verde que solo conserva su sabor un par de años, el té negro lo conserva mucho más tiempo lo que facilito su comercio en la ruta del té entre los paises asiáticos.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p>Los tés negros normalmente se nombran según la región donde son producidos. Las denominaciones más conocidad y prestigiosas son Lapsang Souchong, Keemun, Diang Hong, Ying de Hong para china; Assam, Ceylon, Darjeeling, Nigiri para India y Sry Lanka. Además existen otras regiones productoras ( Vietnam, Nepal y Turquia ) que tambien producen té interesantes.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p>Por norma general los tés procedentes de India y Ceilan son tratados por fuertes cantidades de pesticidas así que antes de consumir un té de este origen es recomendable asegurarse que se trata de un té Bio y de productores de renombre.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-striped col-12">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Temperatura</th>
+                                <th scope="col">Tiempo de Infusión</th>
+                                <th scope="col">Dosis (30 cl)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">China</th>
+                                <td>90°C</td>
+                                <td>4 - 5 min</td>
+                                <td>6g</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">India - Darjeeling de Primavera</th>
+                                <td>85°C</td>
+                                <td>3'30 - 3'45 min</td>
+                                <td>6 - 8g</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">India – Darjeeling Grands Crus</th>
+                                <td>85°C</td>
+                                <td>3'45 - 4 min</td>
+                                <td>6 - 8g</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">India – Darjeeling Otros Períodos</th>
+                                <td>90°C</td>
+                                <td>4 - 5 min</td>
+                                <td>6 - 8g</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">India – Assam</th>
+                                <td>90°C</td>
+                                <td>3 - 4 min</td>
+                                <td>6g</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Sri Lanka y Otros Origines</th>
+                                <td>90°C</td>
+                                <td>3 - 5 min</td>
+                                <td>6g</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Blanc-->
+<div class="modal fade" id="blanc" tabindex="-1" role="dialog" aria-labelledby="TheBlanc" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalles Te Blanco</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <p>El té blanco es apreciado por su fineza y suavidad. Procede de delicadas yemas y hojas jóvenes de la planta que no son oxidadas como para la producción de otros tés. Es producido mayoritariamnete en China ya que se trataba de un té reservado para actos importantes. Los tés blancos más apreciados y de mejor calidad son aquellos procedentes de la provincia de Fujian en China.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-striped col-12">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Temperatura del Agua</th>
+                            <th scope="col">Duración de la Infusión</th>
+                            <th scope="col">Dosis para 30 cl</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">China</th>
+                            <td>70°C - 75°C</td>
+                            <td>5 - 10 min</td>
+                            <td>6g</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"> Otros origenes</th>
+                            <td>70°C - 75°C</td>
+                            <td>4 - 8 min</td>
+                            <td>6g</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Oolong-->
+<div class="modal fade" id="oolong" tabindex="-1" role="dialog" aria-labelledby="TheOolong" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalles Te Oolong</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <p class="col-12">El oolong tiene un sabor más parecido al té verde que al negro: no tiene el aroma dulce y rosáceo del té negro ni las fuertes notas herbales que caracterizan al té verde.</p>
+                </div>
+                <div class="row">
+                    <p class="col-12">Las hojas de té oolong se procesan de dos formas diferentes. Algunas variedades se enrollan en hojas largas y curvas, mientras otras se prensan a formas parecidas a bolas.</p>
+                </div>
+                <div class="row">
+                    <p class="col-12">Los Oolong de mayor prestigio proceden de las provincia Chinas de Fujian y Guangdong, de Taiwan y de Nepal.</p>
+                </div>
+                <div class="row">
+                    <table class="table table-striped col-12">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Temperatura del Agua</th>
+                            <th scope="col">Duración de la Infusión</th>
+                            <th scope="col">Dosis para 30 cl</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Tes Oolong</th>
+                            <td>95°C</td>
+                            <td>5 - 7 min</td>
+                            <td>8 - 10g</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Preparación con Gong Fu Cha</th>
+                            <td>95°C</td>
+                            <td>Por pasajes de 20 seg - 1 min</td>
+                            <td>6g</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Pu Erh-->
+<div class="modal fade" id="puerh" tabindex="-1" role="dialog" aria-labelledby="Thepuerh" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalles Te Pu Erh</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body row">
+                <div class="col-12">
+                    <div class="row">
+                        <h6 class="col-6">Temperatura del Agua</h6>
+                        <p class="col-6">95°C</p>
+                    </div>
+                    <div class="row">
+                        <h6 class="col-6">Duración de la Infusión</h6>
+                        <p class="col-6">4 - 5 min</p>
+                    </div>
+                    <div class="row">
+                        <h6 class="col-6">Dosis para 30 cl</h6>
+                        <p class="col-6">6g</p>
+                    </div>
+                    <div class="row">
+                        <p class="col-12">Los tés Pu Erh son un tipo de té un poco expecial ya que pueden ser oxidados o no pero todos sufren una fermentación que hace aparecer su sabor caracteristico y que les da un alto valor.</p>
+                    </div>
+                    <div class="row">
+                        <p class="col-12">Tradicionalmente solo se producia el Pu Erh crudo (Sheng), esto es el té se comprimia en tortas y se dejaban fermentar naturalmente y tardaban al rededor de 10 años en alcanzar la madurez.</p>
+                    </div>
+                    <div class="row">
+                        <p class="col-12">Pero desde el siglo pasado tambien se producen lo Pu Erh cocidos (Shu) que antes de ser comprimidos en tortas se riegan con agua y se dejan fermentar, para asi intentar imitar el proceso de fermentación natural, esto no sucedio pero si que descubrieron que el té preparado de esta forma tenia un muy buen sabor.</p>
+                    </div>
+                    <div class="row">
+                        <p class="col-12">Los mejores Pu Erh proceden del suroeste de China y las regiones fronterizas con Tibet, Birmania, Vietnam y Laos. Además son de destacar las iniciativas de producir Pu Erh en Africa.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>En Hojas sueltas</h4>
+                            <p>Tipo de Pu Erh apto para el consumo diario. Suele estar compuesto de los restos de hojas que no fueron comprimidas en galletas.</p>
+                        </div>
+                        <div class="col-6">
+                            <h4>En Hojas comprimidas</h4>
+                            <p>Tipo de Pu Erh apto para una maduración de varios años y unicamente para las ocasiones más especiales. Era es te que recorria el gran camino del te que atravesaba toda china. Es tipico de la provincia de Yunan y el Fujian.</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>Pu Erh Shu</h4>
+                            <p>Pu Erh comprimido "Cocido". Elaborado con una tecnica de los años 70 que pretendia imitar el resultado de un Pu Erh Sheng con 10 años de maduración. En su lugar nacio un nuevo tipo de Pu Erh más cremoso que uno tradicional.</p>
+                        </div>
+                        <div class="col-6">
+                            <h4>Pu Erh Sheng</h4>
+                            <p>Pu Erh comprimido "Crudo". Es el tradicional, madurado durante al menos 10 años para alcanzar su maximo nivel gustativo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Ajouter un The-->
+<div class="modal fade" id="ajouter" tabindex="-1" role="dialog" aria-labelledby="ajouter" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Añadir un Te</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="ajout" method="post" action="/ajouter">
+                    <input style="display: none" type="text" id="likes" name="likes" value="0">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="nom" name="nom" placeholder="Nombre">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="description" name="description" placeholder="Descripción" maxlength="500" rows="4" aria-describedby="Hdescription"></textarea>
+                        <small id="Hdescription" class="form-text text-muted">Máx: 500 caracteres.</small>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <select class="form-control" id="tipe" name="tipe" aria-describedby="Tidescription">
+                                <option selected="selected" value="vert">Verde</option>
+                                <option value="noir">Negro</option>
+                                <option value="bleu">Oolong</option>
+                                <option value="rouge">Pu Erh</option>
+                                <option value="blanc">Blanco</option>
+                            </select>
+                            <small id="Tidescription" class="form-text text-muted">Tipo de Té</small>
+                        </div>
+                        <div class="form-group col-6">
+                            <input type="text" class="form-control" id="origen" name="origen" placeholder="Región o País de Orígen">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-4">
+                            <select class="form-control" id="duration" name="duration" aria-describedby="Ddescription">
+                                <option value="10 seg, 30 seg ...">10seg, 30seg, ...</option>
+                                <option value="30 seg - 1 min">30seg - 1min</option>
+                                <option value="1 min">1min</option>
+                                <option selected="selected" value="1 - 2 min">1 - 2min</option>
+                                <option value="2 min">2min</option>
+                                <option value="2 - 3 min">2 - 3min</option>
+                                <option value="3 min">3min</option>
+                                <option value="3 - 4 min">3 - 4min</option>
+                                <option value="4 min">4min</option>
+                                <option value="4 - 5 min">4 - 5min</option>
+                                <option value="5 min">5min</option>
+                                <option value="2 - 4 min">2 - 4min</option>
+                                <option value="2 - 5 min">2 - 5min</option>
+                                <option value="3 - 5 min">3 - 5min</option>
+                                <option value="5 - 10 min">5 - 10min</option>
+                                <option value="10 min">10min</option>
+                            </select>
+                            <small id="Ddescription" class="form-text text-muted">Tiempo de Infusión</small>
+                        </div>
+                        <div class="form-group col-4">
+                            <select class="form-control" id="tempe" name="tempe" aria-describedby="Tdescription">
+                                <option value="50*C">50*C</option>
+                                <option value="55*C">55*C</option>
+                                <option value="50 - 55*C">50 - 55*C</option>
+                                <option value="60*C">60*C</option>
+                                <option value="65*C">65*C</option>
+                                <option value="60 - 65*C">60 - 65*C</option>
+                                <option selected="selected" value="70*C">70*C</option>
+                                <option value="75*C">75*C</option>
+                                <option value="70 - 75*C">70 - 75*C</option>
+                                <option value="80*C">80*C</option>
+                                <option value="85*C">85*C</option>
+                                <option value="80 - 85*C">80 - 85*C</option>
+                                <option value="90*C">90*C</option>
+                                <option value="95*C">95*C</option>
+                                <option value="90 - 95*C">90 - 95*C</option>
+                            </select>
+                            <small id="Tdescription" class="form-text text-muted">Temperatura del Agua</small>
+                        </div>
+                        <div class="form-group col-4">
+                            <select class="form-control" id="grames" name="grames" aria-describedby="Qdescription">
+                                <option value="2g">2g</option>
+                                <option value="3g">3g</option>
+                                <option value="4g">4g</option>
+                                <option value="5g">5g</option>
+                                <option selected="selected" value="6g">6g</option>
+                                <option value="7g">7g</option>
+                                <option value="8g">8g</option>
+                                <option value="9g">9g</option>
+                                <option value="10g">10g</option>
+                            </select>
+                            <small id="Qdescription" class="form-text text-muted">Gramos por cada 30 cl</small>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button form="ajout" type="submit" class="btn btn-success">Añadir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
