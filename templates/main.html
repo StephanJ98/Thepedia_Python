@@ -490,7 +490,7 @@
                         </button>
                     </a>
                     <a class="dropdown-item dropI row">
-                        <button title="Para usar esto tienes que Logearte" disabled="disabled" type="button" class="offset-1 col-11 btn ajoutThe" data-toggle="modal" data-target="#ajouter">
+                        <button title="Para usar esto tienes que Logearte" disabled="disabled" type="button" class="offset-1 col-11 btn ajoutThe">
                             <i class="fa fa-leaf img_header img_feuille"></i>
                             <i class="fa fa-plus img_header"></i>
                         </button>
@@ -824,108 +824,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Ajouter un The-->
-<div class="modal fade" id="ajouter" tabindex="-1" role="dialog" aria-labelledby="ajouter" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Añadir un Te</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form role="form" id="ajout" method="post" action="/ajouter">
-                    <input style="display: none" type="text" id="likes" name="likes" value="0">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="nom" name="nom" placeholder="Nombre">
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" id="description" name="description" placeholder="Descripción" maxlength="500" rows="4" aria-describedby="Hdescription"></textarea>
-                        <small id="Hdescription" class="form-text text-muted">Máx: 500 caracteres.</small>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-6">
-                            <select class="form-control" id="tipe" name="tipe" aria-describedby="Tidescription">
-                                <option selected="selected" value="vert">Verde</option>
-                                <option value="noir">Negro</option>
-                                <option value="bleu">Oolong</option>
-                                <option value="rouge">Pu Erh</option>
-                                <option value="blanc">Blanco</option>
-                            </select>
-                            <small id="Tidescription" class="form-text text-muted">Tipo de Té</small>
-                        </div>
-                        <div class="form-group col-6">
-                            <input type="text" class="form-control" id="origen" name="origen" placeholder="Región o País de Orígen">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-4">
-                            <select class="form-control" id="duration" name="duration" aria-describedby="Ddescription">
-                                <option value="10 seg, 30 seg ...">10seg, 30seg, ...</option>
-                                <option value="30 seg - 1 min">30seg - 1min</option>
-                                <option value="1 min">1min</option>
-                                <option selected="selected" value="1 - 2 min">1 - 2min</option>
-                                <option value="2 min">2min</option>
-                                <option value="2 - 3 min">2 - 3min</option>
-                                <option value="3 min">3min</option>
-                                <option value="3 - 4 min">3 - 4min</option>
-                                <option value="4 min">4min</option>
-                                <option value="4 - 5 min">4 - 5min</option>
-                                <option value="5 min">5min</option>
-                                <option value="2 - 4 min">2 - 4min</option>
-                                <option value="2 - 5 min">2 - 5min</option>
-                                <option value="3 - 5 min">3 - 5min</option>
-                                <option value="5 - 10 min">5 - 10min</option>
-                                <option value="10 min">10min</option>
-                            </select>
-                            <small id="Ddescription" class="form-text text-muted">Tiempo de Infusión</small>
-                        </div>
-                        <div class="form-group col-4">
-                            <select class="form-control" id="tempe" name="tempe" aria-describedby="Tdescription">
-                                <option value="50*C">50*C</option>
-                                <option value="55*C">55*C</option>
-                                <option value="50 - 55*C">50 - 55*C</option>
-                                <option value="60*C">60*C</option>
-                                <option value="65*C">65*C</option>
-                                <option value="60 - 65*C">60 - 65*C</option>
-                                <option selected="selected" value="70*C">70*C</option>
-                                <option value="75*C">75*C</option>
-                                <option value="70 - 75*C">70 - 75*C</option>
-                                <option value="80*C">80*C</option>
-                                <option value="85*C">85*C</option>
-                                <option value="80 - 85*C">80 - 85*C</option>
-                                <option value="90*C">90*C</option>
-                                <option value="95*C">95*C</option>
-                                <option value="90 - 95*C">90 - 95*C</option>
-                            </select>
-                            <small id="Tdescription" class="form-text text-muted">Temperatura del Agua</small>
-                        </div>
-                        <div class="form-group col-4">
-                            <select class="form-control" id="grames" name="grames" aria-describedby="Qdescription">
-                                <option value="2g">2g</option>
-                                <option value="3g">3g</option>
-                                <option value="4g">4g</option>
-                                <option value="5g">5g</option>
-                                <option selected="selected" value="6g">6g</option>
-                                <option value="7g">7g</option>
-                                <option value="8g">8g</option>
-                                <option value="9g">9g</option>
-                                <option value="10g">10g</option>
-                            </select>
-                            <small id="Qdescription" class="form-text text-muted">Gramos por cada 30 cl</small>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button form="ajout" type="submit" class="btn btn-success">Añadir</button>
             </div>
         </div>
     </div>
