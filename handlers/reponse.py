@@ -20,8 +20,9 @@ class MainHandler(webapp2.RequestHandler):
             origen = self.request.get("origen")
             id = int(int(The.query().order(-The.likes).count()) + 1)
             like = int(self.request.get("likes"))
+            use = str("")
             the = The(nombre=nom, descripcion=description, tipo=tipe, tiempoInfusion=duration,
-                      temperatura=temperature, gramos=grames, identificateur=id, likes=like, origen=origen)
+                      temperatura=temperature, gramos=grames, identificateur=id, likes=like, origen=origen, users=use)
             the.put()
         else:
             usr_url = users.create_login_url("/")
@@ -79,8 +80,12 @@ class JaimeHandler(webapp2.RequestHandler):
             if thes.count() != 0:
                 for data in thes:
                     if str(data.identificateur) == str(id):
-                        data.likes = int(int(data.likes) + 1)
-                        data.put()
+                        usrs = str(data.users).split()
+                        print(usr)
+                        if str(usr) not in usrs:
+                            data.likes = int(int(data.likes) + 1)
+                            data.users += str(str(usr) + " ")
+                            data.put()
         else:
             usr_url = users.create_login_url("/")
         thes_actualise = The.query().order(-The.likes)

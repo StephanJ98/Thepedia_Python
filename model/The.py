@@ -11,3 +11,4 @@ class The(ndb.Model):
     gramos = ndb.StringProperty()
     identificateur = ndb.IntegerProperty()
     likes = ndb.IntegerProperty(indexed=True)
+    users = ndb.StringProperty()
