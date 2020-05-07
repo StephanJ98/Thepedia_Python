@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="icon" href="/static/leaf.svg"/>
     <title>ThePedia</title>
     <link rel="stylesheet" type="text/css" href="/static/styles.css">
@@ -196,41 +197,56 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body row" >
-                                <div class="col-12">Tiempo restante <span id="timer{{ data.identificateur }}">{{ data.tiempoInfusion }}</span></div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <p class=" offset-4 col-4">Tiempo restante <span id="timer{{ data.identificateur }}">{{ data.tiempoInfusion }}</span> min</p>
+                                </div>
+                                <div class="progress" style="height: 40px;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" id="cible{{ data.identificateur }}" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" id="stop1{{ data.identificateur }}" data-dismiss="modal">Cerrar</button>
                                 <script>
+                                    function map( x,  initialInf,  initialSup,  finalInf,  finalMax){
+                                        return (x - initialInf) * (finalMax - finalInf) / (initialSup - initialInf) + finalInf;
+                                    }
+                                    const cible = document.getElementById("cible{{ data.identificateur }}");
                                     const datas = document.getElementById("timer{{ data.identificateur }}").innerText;
                                     document.getElementById("timerbtn{{ data.identificateur }}").onclick = () => {
                                         const donnee = datas.split(" ");
                                         let unite = donnee[1];
+                                        let segsI;
                                         let last = donnee[donnee.length - 1];
                                         let sec, min;
                                         switch (unite) {
                                             case "min":
                                                 min = donnee[0];
                                                 sec = 0;
+                                                segsI = min * 60;
                                                 break;
                                             case "-":
                                                 unite = donnee[donnee.length - 1];
                                                 if (unite == "min"){
                                                     min = donnee[2];
                                                     sec = 0;
+                                                    segsI = min * 60;
                                                 }
                                                 break;
                                             case "seg":
                                                 min = 0;
                                                 sec = donnee[0];
+                                                segsI = sec;
                                                 break;
                                             default:
                                                 if(last == "..."){
                                                     min = 0;
                                                     sec = 10;
+                                                    segsI = 10;
                                                 }
                                                 break;
                                         }
+                                        const segsF = segsI;
                                         const func = setInterval(() => {
                                             document.getElementById("timer{{ data.identificateur }}").innerHTML = min + " : " + sec;
                                             if (min == 0 && sec == 0){
@@ -245,15 +261,20 @@
                                                     }
                                                 }
                                                 sec--;
+                                                segsI--;
+                                                let val = 100 - Math.floor(map(segsI,0,segsF,0,100));
+                                                cible.style.width = val + "%";
                                             }
                                         }, 1000);
                                         document.getElementById("stop2{{ data.identificateur }}").onclick = () => {
                                             clearInterval(func);
                                             document.getElementById("timer{{ data.identificateur }}").innerText = datas;
+                                            cible.style.width = "0%";
                                         }
                                         document.getElementById("stop1{{ data.identificateur }}").onclick = () => {
                                             clearInterval(func);
                                             document.getElementById("timer{{ data.identificateur }}").innerText = datas;
+                                            cible.style.width = "0%";
                                         }
                                     }
                                 </script>
