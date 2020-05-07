@@ -23,7 +23,7 @@ Pagina web diseñada para servir como biblioteca de tés online.
                 -   El nombre de cada té.
                 -   Una breve descrición.
                 -   Tres botones: (Funcionales unicamente si el usuario se ha logeado)
-                    -   *Chronos*: Muestra un desplegable donde se muestra una cuenta atras con el tiempo recomendado para la infusión del té.
+                    -   *Chronos*: Muestra un desplegable donde se muestra una cuenta atras y una barra de progreso animada con el tiempo recomendado para la infusión del té.
                     -   *Ver*: Muestra un desplegable donde es visible información más detallada del té. Además permite imprimir un resumen de la información disponible.
                     -   *Gusta*: Permite significar a la web que este té nos gusta. Por lo que lo mostrara en una posición preferente en el momento de mostrar los tés de la pagina.
                 -   El fondo de cada ficha cambiara según el té sea de un tipo u otro.
