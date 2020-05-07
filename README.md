@@ -41,8 +41,6 @@ Pagina web diseñada para servir como biblioteca de tés online.
             -   El atributo *Descripción esta limitado a un maximo de 500 carcteres*
     -   *Chronos* (Funcional unicamente si el usuario se ha logeado)
         -   Una vez iniciada la cuenta atras continuara hasta llegar a 0 : 0 en ese momento se habra alcanzado el tiempo **máximo recomendado** de infusión para el té.
-        -   :bug: En ciertas ocasiones se ha detectado un bug en la cuenta atras, cuando se abria una primera vez el desplegable se cerraba sin esperar a que esta terminara y volviendo a abrilo.
-            -   ***Como evitarlo:*** Si queremos reiniciar una cuenta atras porque hemos salido demasido pronto o por error del desplegable simplemente recargar la página completa y el error se habra solucionado.
     -   *Ver* (Funcional unicamente si el usuario se ha logeado)
         -   Muestra de forma simple toda la información disponible para el té seleccionado, ademas tambien muestra el número de "likes" que ha recibido.
         -   Permite imprimir el desplegable sin mostrar el fondo de la pagina web.
